@@ -1,0 +1,784 @@
+<title>Srividya's Abhyasana</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@600;700&family=Caveat:wght@500&display=swap">
+<style>
+/* Layout: the Figma home page as one long scroll. Cream and pale-blue bands alternate with one deep navy learning wheel and the navy admissions block; navy bold headings pair with an orange or blue italic serif second line. */
+:root{
+  --cream:#FAF9F5; --sky:#EDF4FC; --white:#FFFFFF; --navy:#132647; --navy-deep:#16284C; --footer:#17294D;
+  --ink:#132647; --muted:#4E5B73; --line:#DCE4F0; --blue:#2B55B2; --blue-on-dark:#7FB0FF; --orange:#EC7A24; --orange-deep:#D9650F; --green:#2E9B5A;
+  --head:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --serif:'DM Serif Display',Georgia,'Times New Roman',serif;
+  --body:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --gutter-l:max(16px,env(safe-area-inset-left,0px)); --gutter-r:max(16px,env(safe-area-inset-right,0px));
+  --ease:cubic-bezier(.22,1,.36,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:300 16px/1.65 var(--body);padding-left:var(--gutter-l);padding-right:var(--gutter-r);padding-block:0;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:70;background:#fff}
+h1,h2,h3,h4{font-family:var(--head);font-weight:700;line-height:1.08;margin:0;letter-spacing:-.02em;text-wrap:balance;color:var(--navy)}
+p{margin:0}
+a{color:inherit}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:8px}
+[id]{scroll-margin-top:92px}
+.wrap{max-width:1180px;margin-inline:auto}
+.bleed{margin-left:calc(-1*var(--gutter-l));margin-right:calc(-1*var(--gutter-r));padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.eyebrow{display:block;font:500 11.5px/1.4 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--blue)}
+.on-dark .eyebrow,.eyebrow.light{color:var(--blue-on-dark)}
+.title{font-size:clamp(36px,5.4vw,60px);font-weight:700}
+.title em,.hero h1 em,.adm h2 em{display:block;font:italic 400 1.03em/1.08 var(--serif);letter-spacing:0;color:var(--orange)}
+.hero h1 em{color:var(--blue)}
+.lead{font-size:16.5px;color:var(--muted);max-width:52ch}
+.sec{padding-block:clamp(64px,9vw,112px)}
+.sec-head{display:grid;gap:14px;margin-bottom:clamp(30px,4.5vw,52px)}
+.sec-head.split{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end;gap:24px 56px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 26px;border-radius:999px;border:1.5px solid transparent;font:500 14.5px/1 var(--body);text-decoration:none;cursor:pointer;transition:background .25s,transform .25s,box-shadow .25s,border-color .25s}
+.btn .ar{font-size:13px;transition:transform .25s}
+.btn:hover .ar{transform:translate(2px,-2px)}
+.btn-or{background:var(--orange);color:#fff;box-shadow:0 10px 24px -12px rgba(236,122,36,.9)}
+.btn-or:hover{background:var(--orange-deep);transform:translateY(-1px)}
+.btn-wh{background:#fff;color:var(--navy);border-color:#D8E0EE;box-shadow:0 8px 18px -12px rgba(19,38,71,.45)}
+.btn-wh:hover{border-color:var(--navy);transform:translateY(-1px)}
+.btn-out{border-color:rgba(255,255,255,.5);color:#fff}
+.btn-out:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.btn-sm{min-height:42px;padding:0 20px;font-size:13px}
+
+/* header */
+.site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;background:#fff;transition:box-shadow .3s}
+.site-head.scrolled{box-shadow:0 8px 28px -18px rgba(19,38,71,.55)}
+.head-in{display:flex;align-items:center;gap:22px;min-height:78px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto;flex:none}
+.brand img{height:46px;width:auto}
+.bt{display:grid;line-height:1}
+.bt small{font:500 8.5px/1 var(--body);letter-spacing:.2em;color:#B7772B;text-transform:uppercase;margin-bottom:3px}
+.bt b{font:700 24px/1 'Cormorant Garamond',Georgia,serif;letter-spacing:.07em;color:#26418C;text-transform:uppercase}
+.bt i{font:500 7.5px/1 var(--body);letter-spacing:.34em;color:#6B4A23;text-transform:uppercase;font-style:normal;margin-top:4px}
+.nav{display:flex;align-items:center;gap:2px}
+.nav>li{position:relative;list-style:none}
+.nav ul{margin:0;padding:0}
+.nav a.top,.nav button.top{display:flex;align-items:center;gap:6px;min-height:46px;padding:0 13px;background:none;border:0;cursor:pointer;font:500 13px/1.15 var(--body);color:var(--navy);text-decoration:none;text-align:center;border-radius:10px}
+.nav a.top:hover,.nav button.top:hover,.nav li.active>.top{color:var(--orange)}
+.nav .chev{width:9px;height:9px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:rotate(45deg) translate(-2px,-2px);transition:transform .25s;flex:none}
+.drop{position:absolute;left:50%;top:100%;min-width:210px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 44px -22px rgba(19,38,71,.55);padding:8px;opacity:0;visibility:hidden;transform:translate(-50%,8px);transition:opacity .22s,transform .22s,visibility .22s;z-index:5}
+.nav li:hover>.drop,.nav li:focus-within>.drop{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.nav li:hover .chev{transform:rotate(225deg) translate(-2px,-2px)}
+.drop a{display:block;padding:10px 12px;border-radius:9px;font:400 13.5px/1.3 var(--body);text-decoration:none;color:var(--navy)}
+.drop a:hover{background:var(--sky);color:var(--blue)}
+.menu-btn{display:none;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;place-items:center}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{display:block;width:18px;height:2px;background:var(--navy);border-radius:2px;content:"";position:relative;transition:transform .3s,background .3s,top .3s}
+.menu-btn span::before{position:absolute;top:-6px}.menu-btn span::after{position:absolute;top:6px}
+.menu-btn[aria-expanded="true"] span{background:transparent}
+.menu-btn[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
+.menu-btn[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
+
+/* hero */
+.hero{background:linear-gradient(100deg,var(--cream) 0%,var(--cream) 38%,#EBF6FC 100%);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:clamp(24px,5vw,72px);align-items:center;padding-block:clamp(40px,6vw,84px)}
+.hero-copy{display:grid;gap:26px;justify-items:start}
+.hero h1{font-size:clamp(46px,7.4vw,84px);font-weight:800;line-height:1.02}
+.hero p.lead{max-width:42ch}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.hero-art{position:relative;margin-bottom:34px;max-width:520px;width:100%;justify-self:center}
+.arch{position:relative;overflow:hidden;border-radius:999px 999px 30px 30px;aspect-ratio:4/4.9;background:var(--sky);box-shadow:0 40px 70px -40px rgba(19,38,71,.6)}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;transform:scale(1.08);transition:transform 1.6s var(--ease)}
+.hero-art:hover .arch img{transform:scale(1.02)}
+.float-card{position:absolute;right:-28px;top:16%;background:#fff;padding:12px 20px 12px 16px;border-radius:14px;box-shadow:0 22px 40px -20px rgba(19,38,71,.5);animation:bob 6s ease-in-out infinite}
+.float-card small{display:block;font:500 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.float-card b{font:italic 400 17px/1.2 var(--serif);color:var(--navy);white-space:nowrap}
+.bubble{position:absolute;left:-22px;bottom:-30px;width:clamp(100px,26%,138px);aspect-ratio:1;border-radius:50%;border:5px solid #fff;overflow:hidden;box-shadow:0 22px 40px -20px rgba(19,38,71,.55)}
+.bubble img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* philosophy */
+.philo-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(36px,6vw,90px);align-items:start}
+.philo-l{display:grid;gap:22px}
+.philo-l .lead{max-width:44ch;font-size:15.5px}
+.photo-rnd{overflow:hidden;border-radius:24px 84px 24px 24px;aspect-ratio:1.58;background:var(--sky)}
+.photo-rnd img{width:100%;height:100%;object-fit:cover}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.steps li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:0 22px;padding-bottom:34px;position:relative}
+.steps li:last-child{padding-bottom:0}
+.steps li::before{content:"";position:absolute;left:16.5px;top:38px;bottom:4px;border-left:1.5px dashed #9DB4D8}
+.steps li:last-child::before{display:none}
+.steps .n{width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;font:500 12px/34px var(--body);text-align:center;transition:transform .3s var(--ease),background .3s}
+.steps li:hover .n{transform:scale(1.12);background:var(--orange)}
+.steps h3{font-size:clamp(26px,3.2vw,38px);margin-bottom:6px}
+.steps p{color:var(--muted);font-size:15px;max-width:34ch}
+
+/* legacy */
+.legacy{background:var(--sky)}
+.values{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.values span{padding:6px 16px;border-radius:999px;background:#fff;border:1px solid var(--line);font:500 12px/1.4 var(--body);color:var(--blue)}
+.leg-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 24px;align-items:stretch}
+.leg-l{display:grid;grid-template-rows:1fr auto;gap:22px}
+.bld{border-radius:26px;overflow:hidden;min-height:320px;background:#fff;box-shadow:0 30px 60px -40px rgba(19,38,71,.6)}
+.bld img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;min-height:320px}
+.stat-bar{display:grid;grid-template-columns:repeat(3,auto);justify-content:space-between;gap:16px;background:var(--navy);color:#fff;border-radius:16px;padding:20px 26px}
+.stat-bar b{display:block;font:700 clamp(19px,2.3vw,26px)/1.1 var(--head);font-variant-numeric:tabular-nums}
+.stat-bar span{font-size:11.5px;color:#BCCBE6;line-height:1.35;display:block;margin-top:4px;max-width:14ch}
+.tl{display:grid;gap:14px;align-content:start}
+.tl-card{background:#fff;border-radius:18px;padding:20px 24px;box-shadow:0 18px 32px -26px rgba(19,38,71,.6);transition:transform .35s var(--ease),box-shadow .35s}
+.tl-card:hover{transform:translateX(6px);box-shadow:0 22px 38px -22px rgba(19,38,71,.55)}
+.tl-card small{display:block;font:italic 400 22px/1.1 var(--serif);color:var(--orange);margin-bottom:6px}
+.tl-card b{display:block;font:700 15.5px/1.3 var(--head);color:var(--navy);margin-bottom:4px}
+.tl-card p{font-size:13.5px;color:var(--muted);line-height:1.55}
+.vm{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.vm div{background:#fff;border-radius:18px;padding:22px 26px}
+.vm small{display:block;font:500 11px/1 var(--body);letter-spacing:.2em;color:var(--blue);margin-bottom:10px}
+.vm p{font:400 18px/1.4 var(--serif);color:var(--navy)}
+
+/* academics */
+.acad{display:grid;gap:22px}
+.lv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-radius:26px;overflow:hidden;background:#fff;box-shadow:0 30px 60px -44px rgba(19,38,71,.6)}
+.lv .im{min-height:300px;position:relative}
+.lv .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lv .tx{padding:clamp(24px,4vw,44px);display:grid;gap:14px;align-content:center}
+.lv .tag{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font:500 11px/1.3 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+.lv .tag i{font-style:normal;letter-spacing:0;text-transform:none;background:var(--sky);padding:4px 12px;border-radius:999px;font-size:11.5px}
+.lv h3{font-size:clamp(30px,3.8vw,42px)}
+.lv p{color:var(--muted);font-size:14.5px;max-width:44ch}
+.lv ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.lv li{font:500 14px/1.4 var(--body);padding-left:26px;position:relative}
+.lv li::before{content:"";position:absolute;left:3px;top:.4em;width:6px;height:11px;border-right:2px solid var(--green);border-bottom:2px solid var(--green);transform:rotate(40deg)}
+.lv .more{justify-self:start;font:500 13.5px/1 var(--body);text-decoration:none;color:var(--blue);padding-bottom:3px;border-bottom:1px solid currentColor;margin-top:4px}
+.lv.dk{background:var(--navy-deep);color:#fff}
+.lv.dk h3{color:#fff}.lv.dk p{color:#C4D0E8}.lv.dk .tag{color:#9BB8EA}.lv.dk .tag i{background:rgba(255,255,255,.14);color:#fff}
+.lv.dk li::before{border-color:#6FD59B}.lv.dk .more{color:#8DB8FF}
+.lv.dk .im{order:2}
+.pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px}
+.pills span{padding:8px 18px;border-radius:999px;background:#fff;border:1px solid #D6DEEB;font:400 12.5px/1.3 var(--body);color:var(--navy)}
+
+/* gallery */
+.gal-wrap{background:#fff}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.chip{min-height:38px;padding:0 18px;border-radius:999px;border:0;background:#F2F6FC;color:var(--blue);font:500 12.5px/1 var(--body);cursor:pointer;transition:background .25s,color .25s}
+.chip:hover{background:#E1EBFA}
+.chip[aria-pressed="true"]{background:var(--navy);color:#fff}
+.gal{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:clamp(70px,9.4vw,112px);gap:14px;grid-auto-flow:dense}
+.tile{position:relative;overflow:hidden;border-radius:20px;background:var(--sky);margin:0;min-width:0;transform:translateZ(0)}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.tile:hover img{transform:scale(1.07)}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,48,.78) 0%,rgba(10,22,48,0) 52%)}
+.tile figcaption{position:absolute;left:16px;right:12px;bottom:12px;z-index:1;color:#fff}
+.tile small{display:block;font:500 9.5px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:#A9CBFF;margin-bottom:5px}
+.tile b{font:italic 400 17px/1.15 var(--serif)}
+.t1{grid-column:span 6;grid-row:span 3}.t2{grid-column:span 3;grid-row:span 3}.t3{grid-column:span 3;grid-row:span 3}
+.t4{grid-column:span 4;grid-row:span 2}.t5{grid-column:span 4;grid-row:span 2}.t6{grid-column:span 4;grid-row:span 2}
+.t7{grid-column:span 3;grid-row:span 2}.t8{grid-column:span 5;grid-row:span 2}.t9{grid-column:span 4;grid-row:span 2}
+.gal.filtered{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:auto}
+.gal.filtered .tile{grid-column:auto;grid-row:auto;aspect-ratio:4/3}
+.tile[hidden]{display:none}
+
+/* beyond + celebrate */
+.rail-box{position:relative}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 56px)/3);gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:6px 2px 56px;margin:0 -2px;scroll-behavior:smooth}
+.rail::-webkit-scrollbar{display:none}
+.rail>*{scroll-snap-align:start}
+.arrow{position:absolute;top:30%;width:42px;height:42px;border-radius:50%;border:1.5px solid var(--navy);background:#fff;color:var(--navy);cursor:pointer;display:grid;place-items:center;font-size:18px;z-index:3;transition:background .25s,color .25s}
+.arrow:hover{background:var(--navy);color:#fff}
+.arrow.prev{left:-18px}.arrow.next{right:-18px;background:var(--navy);color:#fff}
+.arrow.next:hover{background:var(--orange);border-color:var(--orange)}
+.arrow:disabled{opacity:.35;cursor:default}
+.bcard{background:#fff;border-radius:20px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;box-shadow:0 26px 44px -34px rgba(19,38,71,.55);transition:transform .4s var(--ease),box-shadow .4s}
+.bcard:nth-child(2n){margin-top:42px}
+.bcard:hover{transform:translateY(-6px);box-shadow:0 34px 50px -30px rgba(19,38,71,.6)}
+.bcard .ph{aspect-ratio:1.28;overflow:hidden}
+.bcard .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.bcard:hover .ph img{transform:scale(1.06)}
+.bcard .bd{padding:18px 22px 26px;display:grid;gap:8px;align-content:start;min-height:150px}
+.bcard .bar{width:30px;height:2px;background:var(--c,#7BC67E)}
+.bcard h3{font-size:20px;display:flex;justify-content:space-between;align-items:center}
+.bcard h3 span{color:var(--orange);font-size:15px}
+.bcard p{font-size:13.5px;color:var(--muted);line-height:1.55;max-width:30ch}
+.ccard{display:grid;gap:6px;align-content:start}
+.ccard .ph{aspect-ratio:1.4;border-radius:16px;overflow:hidden;margin-bottom:8px}
+.ccard .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.ccard:hover .ph img{transform:scale(1.06)}
+.ccard small{font:italic 400 14px/1 var(--serif);color:var(--orange)}
+.ccard h3{font-size:22px}
+.ccard p{font-size:13.5px;color:var(--muted);line-height:1.55;max-width:34ch}
+
+/* wheel */
+.offers{background:var(--navy-deep);color:#fff;position:relative;overflow:hidden}
+.offers::before{content:"";position:absolute;right:-120px;top:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(70,120,230,.28),transparent 68%);pointer-events:none}
+.offers .title{color:#fff}
+.wheel-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,6vw,84px);align-items:center;position:relative}
+.wheel{position:relative;width:min(100%,470px);aspect-ratio:1.04;margin-inline:auto}
+.wheel::before{content:"";position:absolute;inset:17% 15%;border-radius:50%;border:1px solid rgba(255,255,255,.16)}
+.hub{position:absolute;left:50%;top:50%;width:42%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);display:grid;place-content:center;text-align:center;padding:12%}
+.hub small{font:500 8.5px/1.2 var(--body);letter-spacing:.2em;color:#9BB8EA;text-transform:uppercase;margin-bottom:6px}
+.hub b{font:italic 400 clamp(17px,2vw,22px)/1.15 var(--serif);color:#fff}
+.node{position:absolute;transform:translate(-50%,-50%);background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px 14px;font:500 12.5px/1.3 var(--body);color:#fff;cursor:pointer;text-align:center;min-width:104px;transition:background .3s,transform .3s var(--ease),box-shadow .3s}
+.node:hover{background:rgba(255,255,255,.18)}
+.node[aria-selected="true"]{background:var(--orange);border-color:var(--orange);transform:translate(-50%,-50%) scale(1.07);box-shadow:0 14px 28px -12px rgba(236,122,36,.8)}
+.n1{left:50%;top:8%}.n2{left:88%;top:29%}.n3{left:86%;top:71%}.n4{left:50%;top:94%}.n5{left:14%;top:71%}.n6{left:12%;top:29%}
+.panel{display:grid;gap:14px}
+.pimgs{position:relative;aspect-ratio:1.5;border-radius:22px 90px 22px 22px;overflow:hidden;background:#0F1D3E}
+.pimgs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .7s,transform 1.4s var(--ease)}
+.pimgs img.on{opacity:1;transform:scale(1)}
+.pcount{font:500 11px/1 var(--body);letter-spacing:.2em;color:#8DB8FF;margin-top:10px}
+.panel h3{color:#fff;font-size:clamp(26px,3.2vw,36px)}
+.panel .tg{font:500 15px/1.4 var(--body);color:#fff}
+.panel .sc{font-size:13px;color:#BCCBE6;padding-left:12px;border-left:2px solid var(--orange);max-width:46ch}
+
+/* campus */
+.campus-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:22px}
+.big{position:relative;border-radius:24px;overflow:hidden;min-height:360px;color:#fff;display:grid;align-content:end;padding:26px;grid-row:span 2}
+.big img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.big:hover img{transform:scale(1.04)}
+.big::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,14,6,.78),rgba(20,14,6,0) 62%)}
+.big>div{position:relative;z-index:1}
+.big h3{color:#fff;font-size:26px;margin-bottom:6px}
+.big p{font-size:13.5px;color:#F1E9DD;max-width:44ch;line-height:1.55}
+.fac{display:grid;grid-template-columns:minmax(96px,34%) minmax(0,1fr);gap:18px;align-items:center;background:#fff;border-radius:20px;padding:12px 18px 12px 12px;transition:transform .35s var(--ease),box-shadow .35s;box-shadow:0 20px 34px -30px rgba(19,38,71,.6)}
+.fac:hover{transform:translateY(-4px);box-shadow:0 26px 40px -28px rgba(19,38,71,.55)}
+.fac img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px}
+.fac h3{font-size:21px;margin-bottom:4px}
+.fac p{font-size:13.5px;color:var(--muted);line-height:1.5}
+.fac-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;grid-column:1/-1}
+.rail-sec{background:#fff}
+
+/* parents */
+.par-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(34px,6vw,84px);align-items:center}
+.par-photo{position:relative}
+.par-photo .im{overflow:hidden;border-radius:90px 24px 24px 90px;aspect-ratio:1.28;background:var(--sky)}
+.par-photo img{width:100%;height:100%;object-fit:cover}
+.par-pill{position:absolute;left:34%;bottom:-16px;background:#4CD27B;color:#0C3A1E;font:500 12.5px/1 var(--body);padding:11px 18px;border-radius:999px;box-shadow:0 14px 26px -14px rgba(46,155,90,.8)}
+.par-txt{display:grid;gap:18px}
+.par-list{display:grid;grid-template-columns:1fr 1fr;gap:6px 28px;margin-top:10px}
+.par-list div{border-top:1px solid #9EC5F0;padding:14px 0 20px}
+.par-list b{display:block;font:600 13.5px/1.3 var(--head);margin-bottom:4px}
+.par-list span{font-size:13px;color:var(--muted);line-height:1.55;display:block}
+
+/* admissions */
+.adm{background:var(--navy-deep);color:#fff;position:relative;overflow:hidden}
+.adm::before{content:"";position:absolute;left:0;top:0;bottom:0;width:38%;background:linear-gradient(to right,rgba(22,40,76,.7),rgba(22,40,76,1)),url(img/two-girls-hijab.jpg) center/cover;opacity:.7}
+.adm-grid{position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(34px,6vw,84px);align-items:center}
+.adm h2{color:#fff;font-size:clamp(38px,5.6vw,60px)}
+.adm h2 em{color:var(--orange)}
+.adm .lead{color:#D0DAEE;margin-top:20px;font-size:15.5px}
+.adm .cta-row{margin-top:26px}
+.adm-img{margin-top:28px;width:120px;aspect-ratio:.8;border-radius:60px 60px 18px 18px;overflow:hidden;box-shadow:0 20px 34px -18px rgba(0,0,0,.6)}
+.adm-img img{width:100%;height:100%;object-fit:cover}
+.form{background:#fff;color:var(--navy);border-radius:22px;padding:clamp(22px,3.6vw,36px);display:grid;gap:16px;box-shadow:0 40px 80px -40px rgba(0,0,0,.65)}
+.form h3{font-size:18px}
+.form .note{font-size:11.5px;color:var(--muted);margin-top:-8px}
+.fld{display:grid;gap:6px;min-width:0}
+.fld label,.fld .lb{font:600 12.5px/1.3 var(--head)}
+.fld input,.fld select,.fld textarea{width:100%;min-height:46px;border-radius:12px;border:1.5px solid #D4DCEA;background:#fff;padding:0 14px;font:400 15px/1.4 var(--body);color:var(--navy);transition:border-color .2s,box-shadow .2s}
+.fld textarea{min-height:104px;padding:12px 14px;resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 4px rgba(43,85,178,.14)}
+.fld .err{font-size:12px;color:#C23B2E;min-height:0}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{display:grid;place-items:center;min-height:46px;border-radius:12px;border:1.5px solid #D4DCEA;font:500 13px/1 var(--body);cursor:pointer;transition:all .2s}
+.seg input:checked+label{background:var(--navy);border-color:var(--navy);color:#fff}
+.seg input:focus-visible+label{outline:3px solid var(--orange);outline-offset:2px}
+.agree{display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--muted);line-height:1.5}
+.agree input{width:18px;height:18px;margin-top:2px;accent-color:var(--orange);flex:none}
+.form .btn{justify-self:start}
+.thanks{display:grid;gap:12px;text-align:left}
+.thanks h3{font-size:26px}
+
+/* visit */
+.visit-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,5vw,70px);align-items:center}
+.visit-l{display:grid;gap:22px}
+.visit-l .im{border-radius:24px;overflow:hidden;aspect-ratio:1.65}
+.visit-l img{width:100%;height:100%;object-fit:cover}
+.vcard{background:#fff;border-radius:24px;box-shadow:0 36px 60px -40px rgba(19,38,71,.6);overflow:hidden}
+.vc-in{padding:clamp(22px,3.4vw,34px);display:grid;gap:24px}
+.vc-in .ico{width:26px;height:26px;color:var(--orange)}
+.vc-in h4{font:600 14.5px/1.35 var(--head);margin-bottom:6px;letter-spacing:-.005em}
+.vc-in address{font-style:normal;font-size:13.5px;color:var(--muted);line-height:1.6}
+.vc-in a.dir{display:inline-flex;gap:8px;align-items:center;margin-top:10px;font:500 13px/1 var(--body);color:var(--blue);text-decoration:none}
+.vc-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.vc-2 small{display:block;font:600 12.5px/1.2 var(--head);margin:8px 0 6px;color:var(--navy)}
+.vc-2 a,.vc-2 span.t{display:block;font:500 15.5px/1.55 var(--body);color:var(--blue);text-decoration:none;overflow-wrap:anywhere}
+.vc-foot{background:var(--sky);padding:18px clamp(22px,3.4vw,34px);display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font:500 12.5px/1.4 var(--body)}
+
+/* footer */
+footer{background:var(--footer);color:#fff;border-top:3px solid var(--orange)}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr) minmax(0,1fr);gap:36px 56px;padding-block:56px 40px}
+.plate{background:#fff;border-radius:14px;padding:12px 18px;display:inline-flex;align-items:center;gap:10px;margin-bottom:20px}
+.plate img{height:56px}
+.plate .bt b{font-size:26px}
+.plate .tg{display:block;font:500 13px/1 'Caveat',cursive;color:#7a7f8b;margin-top:5px;letter-spacing:.02em}
+footer p.about{font-size:13.5px;max-width:34ch;color:#E4EAF6;line-height:1.6}
+footer h4{font:500 11.5px/1 var(--body);letter-spacing:.2em;color:#8DB8FF;text-transform:uppercase;margin-bottom:18px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+footer ul a{text-decoration:none;font-size:13.5px;color:#E4EAF6}
+footer ul a:hover{color:#fff;text-decoration:underline}
+footer .ct{font-size:13.5px;color:#E4EAF6;line-height:1.7;display:grid;gap:10px;overflow-wrap:anywhere}
+.foot-bot{border-top:1px solid rgba(255,255,255,.14);padding-block:18px 26px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:11.5px;color:#C4CFE6}
+
+.mbar{display:none}
+.rv{transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.js .rv:not(.in){opacity:.3;transform:translateY(28px)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+@media (max-width:1000px){
+  .nav,.head-cta{display:none}
+  .menu-btn{display:grid}
+  .nav.open{display:grid;position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid var(--line);box-shadow:0 30px 40px -30px rgba(19,38,71,.5);padding:8px max(16px,env(safe-area-inset-right,0px)) 18px max(16px,env(safe-area-inset-left,0px));gap:0;max-height:calc(100svh - 90px);overflow:auto}
+  .nav.open>li{border-bottom:1px solid var(--line)}
+  .nav.open a.top,.nav.open button.top{width:100%;justify-content:space-between;text-align:left;font-size:15.5px;min-height:54px;padding:0 4px}
+  .drop{position:static;transform:none!important;opacity:1;visibility:visible;box-shadow:none;border:0;padding:0 0 10px 12px;min-width:0;display:none}
+  .nav li.open>.drop{display:block}
+  .nav li.open .chev{transform:rotate(225deg) translate(-2px,-2px)}
+  .nav li:hover>.drop{transform:none}
+  .hero-grid,.philo-grid,.leg-grid,.lv,.wheel-grid,.campus-grid,.par-grid,.adm-grid,.visit-grid,.sec-head.split{grid-template-columns:minmax(0,1fr)}
+  .hero-art{max-width:440px}
+  .float-card{right:-6px}
+  .lv.dk .im{order:0}
+  .lv .im{min-height:240px}
+  .rail{grid-auto-columns:calc((100% - 28px)/2)}
+  .arrow{display:none}
+  .bcard:nth-child(2n){margin-top:0}
+  .big{grid-row:auto;min-height:300px}
+  .fac-row{grid-template-columns:1fr 1fr}
+  .adm::before{width:100%;opacity:.28;background:linear-gradient(to bottom,rgba(22,40,76,.4),rgba(22,40,76,1)),url(img/two-girls-hijab.jpg) center/cover}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .foot-grid>:first-child{grid-column:1/-1}
+  .vm{grid-template-columns:1fr}
+  .mbar{display:grid;grid-template-columns:1fr 1.5fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:65;background:#fff;border-top:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));box-shadow:0 -12px 28px -22px rgba(19,38,71,.6)}
+  .mbar .btn{min-height:48px;padding:0 12px;font-size:14px}
+  footer{padding-bottom:78px}
+}
+@media (max-width:700px){
+  .wheel{aspect-ratio:auto;width:100%;display:flex;flex-wrap:wrap;gap:8px}
+  .wheel::before,.hub{display:none}
+  .node{position:static;transform:none;min-width:0;padding:11px 16px;border-radius:999px}
+  .node[aria-selected="true"]{transform:none}
+  .rail{grid-auto-columns:82%;gap:16px}
+  .gal{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto;gap:10px}
+  .gal .tile{grid-column:auto!important;grid-row:auto!important;aspect-ratio:1/1.05}
+  .gal .t1{grid-column:1/-1!important;aspect-ratio:1.5}
+  .gal.filtered{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gal.filtered .tile{aspect-ratio:1/1.05}
+  .fac-row{grid-template-columns:1fr}
+  .par-list,.f2,.vc-2{grid-template-columns:1fr}
+  .stat-bar{grid-template-columns:repeat(3,1fr);padding:18px 16px;gap:10px}
+  .stat-bar span{max-width:none;font-size:10.5px}
+  .float-card{right:0;top:10%;padding:10px 14px}
+  .float-card b{font-size:14.5px}
+  .hero h1{font-size:clamp(44px,13vw,60px)}
+  .par-pill{left:12%}
+  .foot-grid{grid-template-columns:1fr}
+  .sec-head.split{gap:14px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .rv:not(.in){opacity:1;transform:none}}
+</style>
+
+<header class="site-head bleed" id="head">
+  <div class="wrap head-in">
+    <a class="brand" href="#home" aria-label="Srividya's Abhyasana The School, home"><img src="img/logo-mark.png" alt="" width="53" height="46"><span class="bt"><small>Srividya's</small><b>Abhyasana</b><i>The School</i></span></a>
+    <nav aria-label="Main">
+      <ul class="nav" id="nav">
+        <li class="active"><a class="top" href="#home">Home</a></li>
+        <li><button class="top" type="button" aria-haspopup="true">Our School <span class="chev"></span></button><div class="drop"><a href="#philosophy">Our philosophy</a><a href="#legacy">Our legacy</a><a href="#vision">Vision and mission</a></div></li>
+        <li><button class="top" type="button" aria-haspopup="true">Academics <span class="chev"></span></button><div class="drop"><a href="#academics">Early foundations</a><a href="#growing">Growing minds</a><a href="#offers">What Abhyasana offers</a></div></li>
+        <li><button class="top" type="button" aria-haspopup="true">Student Life <span class="chev"></span></button><div class="drop"><a href="#student-life">Little moments</a><a href="#celebrate">Celebrating effort</a><a href="#parents">Parent partnership</a></div></li>
+        <li><button class="top" type="button" aria-haspopup="true">Beyond Academics <span class="chev"></span></button><div class="drop"><a href="#beyond">Yoga, chess and football</a></div></li>
+        <li><button class="top" type="button" aria-haspopup="true">Campus &amp; Facilities <span class="chev"></span></button><div class="drop"><a href="#campus">Our campus</a><a href="#contact">Visit us</a></div></li>
+      </ul>
+    </nav>
+    <a class="btn btn-or head-cta" href="#admissions">Explore Admissions <span class="ar">↗</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+
+<main id="home">
+  <section class="hero bleed">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Srividya's Abhyasana . The School</span>
+        <h1>More Than Education.<em>A World of Possibilities.</em></h1>
+        <p class="lead">At Abhyasana, every child is encouraged to think independently, discover new interests, build confidence and grow into a capable, compassionate individual.</p>
+        <div class="cta-row">
+          <a class="btn btn-or" href="#philosophy">Discover Abhyasana <span class="ar">↗</span></a>
+          <a class="btn btn-wh" href="#admissions">Explore Admissions</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="arch"><img src="img/hero-girl.jpg" alt="A smiling girl in an orange uniform holding up paint-covered hands"></div>
+        <div class="float-card"><small>Every day</small><b>Learning. Creating. Growing.</b></div>
+        <div class="bubble"><img src="img/growing-minds.jpg" alt="A student looking through a microscope"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bleed" id="philosophy">
+    <div class="wrap philo-grid">
+      <div class="philo-l rv">
+        <span class="eyebrow">Our philosophy</span>
+        <h2 class="title">Every Child Has a Story.<em>We Help Them Discover It.</em></h2>
+        <p class="lead">Education is more than textbooks and examinations. It is a journey of discovery where curiosity becomes understanding, practice builds confidence and meaningful experiences prepare children for the world ahead.</p>
+        <div class="photo-rnd"><img src="img/teacher-bench.jpg" alt="A teacher sitting with young children on a bench in a bright classroom" loading="lazy"></div>
+      </div>
+      <ol class="steps rv">
+        <li><span class="n">01</span><div><h3>Discover</h3><p>Encourage questions, curiosity and exploration.</p></div></li>
+        <li><span class="n">02</span><div><h3>Understand</h3><p>Build conceptual clarity through meaningful learning.</p></div></li>
+        <li><span class="n">03</span><div><h3>Create</h3><p>Give students opportunities to express ideas and solve problems.</p></div></li>
+        <li><span class="n">04</span><div><h3>Grow</h3><p>Encourage confidence, communication, independence and responsibility.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec legacy bleed" id="legacy">
+    <div class="wrap">
+      <div class="sec-head split rv">
+        <div style="display:grid;gap:14px"><span class="eyebrow">Our legacy</span><h2 class="title">Built on Values.<em>Growing Through Learning.</em></h2></div>
+        <div><p class="lead" style="font-size:14.5px">Abhyasana is part of the Srividya family of schools - a legacy that grew from building lasting structures to building lasting futures.</p><div class="values"><span>Integrity</span><span>Respect</span><span>Equality</span><span>Service</span></div></div>
+      </div>
+      <div class="leg-grid">
+        <div class="leg-l rv">
+          <div class="bld"><img src="img/building.jpg" alt="The Abhyasana school building" loading="lazy"></div>
+          <div class="stat-bar" id="stats">
+            <div><b data-n="14000" data-s="+" data-f="1">14,000+</b><span>Students across the group</span></div>
+            <div><b data-n="920" data-s="+">920+</b><span>Educators &amp; professionals</span></div>
+            <div><b data-n="5.25" data-s="L+" data-d="2">5.25L+</b><span>Sq. ft of built campus space</span></div>
+          </div>
+        </div>
+        <div class="tl rv">
+          <div class="tl-card"><small>34-yrs</small><b>A legacy in building</b><p>From a legacy in construction to a lasting purpose in education.</p></div>
+          <div class="tl-card"><small>2015</small><b>Srividya Schools established</b><p>Founded with a vision to redefine education through excellence and innovation.</p></div>
+          <div class="tl-card"><small>Today</small><b>A growing family of campuses</b><p>Serilingampally, Attapur, Kothagudem, Palvancha, Bhadrachalam and Chirala.</p></div>
+          <div class="tl-card"><small>2023</small><b>Abhyasana was founded in 2023.</b><p>Since 2023, Abhyasana has been nurturing young minds, inspiring curiosity, and building a strong foundation for lifelong learning.</p></div>
+        </div>
+        <div class="vm rv" id="vision">
+          <div><small>VISION</small><p>Empowering Mind, Shaping Future With Global Standards.</p></div>
+          <div><small>MISSION</small><p>Nurturing Minds With Unique, Qualitative Teaching And Fostering Emotional Intelligence.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bleed" id="academics">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Academic experience</span><h2 class="title">Strong Foundations.<em>Meaningful Learning.</em></h2></div>
+      <div class="acad">
+        <article class="lv rv">
+          <div class="im"><img src="img/early-foundations.jpg" alt="A teacher building with colourful blocks alongside two young children" loading="lazy"></div>
+          <div class="tx">
+            <div class="tag">Nursery - Grade V <i>CBSE curriculum</i></div>
+            <h3>Early Foundations</h3>
+            <p>Playful, hands-on days where children build language, number sense and curiosity and discover that learning is a joy.</p>
+            <ul><li>Activity-based teaching</li><li>Phonics &amp; vocabulary</li><li>Building, drawing &amp; storytelling</li></ul>
+            <a class="more" href="#offers">Explore Learning ↗</a>
+          </div>
+        </article>
+        <article class="lv dk rv" id="growing">
+          <div class="im"><img src="img/growing-minds.jpg" alt="Two students at a microscope in the science lab" loading="lazy"></div>
+          <div class="tx">
+            <div class="tag">Grades VI-X <i>Integrated curriculum</i></div>
+            <h3>Growing Minds</h3>
+            <p>Concept-oriented learning, practical science and independent study habits that build analytical thinking and confidence.</p>
+            <ul><li>Concept-oriented learning</li><li>Lab &amp; practical work</li><li>Continuous assessment &amp; progress analysis</li></ul>
+            <a class="more" href="#offers">Explore Learning ↗</a>
+          </div>
+        </article>
+      </div>
+      <div class="pills rv"><span>Activity-based teaching</span><span>Concept-oriented learning</span><span>Continuous assessment</span><span>Student progress analysis</span><span>Remedial support</span><span>Digital/smart classrooms</span><span>Communication &amp; life skills</span><span>Parent-teacher meetings</span></div>
+    </div>
+  </section>
+
+  <section class="sec gal-wrap bleed" id="student-life">
+    <div class="wrap">
+      <div class="sec-head split rv">
+        <div style="display:grid;gap:14px"><span class="eyebrow">Student life</span><h2 class="title">Little Moments.<em>Lifelong Memories.</em></h2></div>
+        <p class="lead" style="font-size:15px">From classroom discoveries to the excitement of the playground, school life is filled with opportunities to learn, connect, express and grow.</p>
+      </div>
+      <div class="chips" id="chips" role="group" aria-label="Filter activities"></div>
+      <div class="gal" id="gal">
+        <figure class="tile t1" data-c="creativity"><img src="img/hero-girl.jpg" alt="A girl showing off her paint-covered hands" loading="lazy"><figcaption><small>Creativity</small><b>Ideas Take Shape</b></figcaption></figure>
+        <figure class="tile t2" data-c="classroom"><img src="img/growing-minds.jpg" alt="A student using a microscope" loading="lazy"><figcaption><small>Classroom</small><b>Curiosity in Action</b></figcaption></figure>
+        <figure class="tile t3" data-c="classroom"><img src="img/teacher-bench.jpg" alt="A teacher with children on a bench" loading="lazy"><figcaption><small>Classroom</small><b>Every Voice Matters</b></figcaption></figure>
+        <figure class="tile t4" data-c="sports"><img src="img/football.jpg" alt="Students playing football" loading="lazy"><figcaption><small>Sports</small><b>Growing Through Play</b></figcaption></figure>
+        <figure class="tile t5" data-c="classroom"><img src="img/early-foundations.jpg" alt="Young children building with blocks" loading="lazy"><figcaption><small>Classroom</small><b>Learning Together</b></figcaption></figure>
+        <figure class="tile t6" data-c="events creativity"><img src="img/c-voice.jpg" alt="A girl painting a mural" loading="lazy"><figcaption><small>Events</small><b>Confidence on Stage</b></figcaption></figure>
+        <figure class="tile t7" data-c="events achievements"><img src="img/chess.jpg" alt="A student playing chess with a coach" loading="lazy"><figcaption><small>Events</small><b>Think Two Moves Ahead</b></figcaption></figure>
+        <figure class="tile t8" data-c="sports"><img src="img/c-field.jpg" alt="Students playing a team game on the turf" loading="lazy"><figcaption><small>Sports</small><b>Team Spirit</b></figcaption></figure>
+        <figure class="tile t9" data-c="classroom creativity achievements"><img src="img/lab-goggles.jpg" alt="Two students in safety goggles in the lab" loading="lazy"><figcaption><small>Classroom</small><b>Side by Side</b></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bleed" id="beyond">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Beyond academics</span><h2 class="title">Room to Explore.<em>Freedom to Become.</em></h2><p class="lead" style="font-size:15px">Every child deserves opportunities to discover new strengths, develop interests and experience the joy of learning beyond the classroom.</p></div>
+      <div class="rail-box rv">
+        <button class="arrow prev" data-rail="beyondRail" data-dir="-1" aria-label="Previous">←</button>
+        <div class="rail" id="beyondRail">
+          <article class="bcard" style="--c:#7BC67E"><div class="ph"><img src="img/yoga.jpg" alt="Students practising yoga on the lawn" loading="lazy"></div><div class="bd"><span class="bar"></span><h3>Yoga <span>→</span></h3><p>Breath, balance and focus — a calm start for growing minds.</p></div></article>
+          <article class="bcard" style="--c:#132647"><div class="ph"><img src="img/chess.jpg" alt="A student playing chess" loading="lazy"></div><div class="bd"><span class="bar"></span><h3>Chess <span>→</span></h3><p>Patience, planning and strategic thinking across the board.</p></div></article>
+          <article class="bcard" style="--c:#EC7A24"><div class="ph"><img src="img/football.jpg" alt="Students playing football" loading="lazy"></div><div class="bd"><span class="bar"></span><h3>Football <span>→</span></h3><p>Teamwork, fitness and fair play on our turf.</p></div></article>
+        </div>
+        <button class="arrow next" data-rail="beyondRail" data-dir="1" aria-label="Next">→</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec offers bleed on-dark" id="offers">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">What Abhyasana offers</span><h2 class="title">Learning for the Classroom.<em style="color:var(--orange)">Skills for Life.</em></h2></div>
+      <div class="wheel-grid rv">
+        <div class="wheel" role="tablist" aria-label="What Abhyasana offers" id="wheel">
+          <div class="hub"><small>At the centre</small><b>Whole-Child Development</b></div>
+        </div>
+        <div class="panel" aria-live="polite">
+          <div class="pimgs" id="pimgs"></div>
+          <div class="pcount" id="pcount">01 / 06</div>
+          <h3 id="ptitle"></h3>
+          <p class="tg" id="ptag"></p>
+          <p class="sc" id="pschool"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bleed" id="campus">
+    <div class="wrap">
+      <div class="sec-head split rv">
+        <div style="display:grid;gap:14px"><span class="eyebrow">Campus &amp; facilities</span><h2 class="title">Spaces That<em>Inspire Discovery.</em></h2></div>
+        <div style="justify-self:end"><a class="btn btn-wh btn-sm" href="#contact">Explore Our Campus <span class="ar">↗</span></a></div>
+      </div>
+      <div class="campus-grid rv">
+        <div class="big"><img src="img/campus-reception.jpg" alt="The warm, softly lit school reception" loading="lazy"><div><h3>Our campus</h3><p>A dedicated school building in Serilingampalli. Thoughtfully designed, welcoming spaces from the moment families arrive.</p></div></div>
+        <div class="fac"><img src="img/science-lab.jpg" alt="A student at a microscope" loading="lazy"><div><h3>Science lab</h3><p>Microscopes and practical work.</p></div></div>
+        <div class="fac"><img src="img/play-area.jpg" alt="The outdoor play area with a green slide" loading="lazy"><div><h3>Play area</h3><p>Safe outdoor play for younger children.</p></div></div>
+        <div class="fac-row">
+          <div class="fac"><img src="img/sports-turf.jpg" alt="Students lined up on the sports turf" loading="lazy"><div><h3>Sports turf</h3><p>Football, games and fitness.</p></div></div>
+          <div class="fac"><img src="img/lounge-small.jpg" alt="The reception and parent lounge" loading="lazy"><div><h3>Welcoming spaces</h3><p>Reception and parent lounge.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec rail-sec bleed" id="celebrate">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="eyebrow">Moments worth celebrating</span><h2 class="title">Celebrating Effort.<em>Recognising Growth.</em></h2></div>
+      <div class="rail-box rv">
+        <button class="arrow prev" data-rail="celRail" data-dir="-1" aria-label="Previous">←</button>
+        <div class="rail" id="celRail" style="padding-bottom:20px">
+          <article class="ccard"><div class="ph"><img src="img/c-chess.jpg" alt="Students sharpening their focus over a chess board" loading="lazy"></div><small>01</small><h3>Strategic minds</h3><p>Students sharpening focus and planning through chess.</p></article>
+          <article class="ccard"><div class="ph"><img src="img/c-field.jpg" alt="Students in a team game on the field" loading="lazy"></div><small>02</small><h3>On the field</h3><p>Team games that teach resilience and fair play.</p></article>
+          <article class="ccard"><div class="ph"><img src="img/c-voice.jpg" alt="A young presenter at a mural" loading="lazy"></div><small>03</small><h3>Finding their voice</h3><p>Young presenters sharing what they've learned.</p></article>
+        </div>
+        <button class="arrow next" data-rail="celRail" data-dir="1" aria-label="Next">→</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bleed" id="parents">
+    <div class="wrap par-grid">
+      <div class="par-photo rv"><div class="im"><img src="img/parents.jpg" alt="A father reading a newspaper with two children" loading="lazy"></div><span class="par-pill">Learning continues at home</span></div>
+      <div class="par-txt rv">
+        <span class="eyebrow">Parent partnership</span>
+        <h2 class="title">A Stronger Journey.<em>Together.</em></h2>
+        <p class="lead" style="font-size:15px">Children thrive when parents and educators work as one team — sharing observations, celebrating progress and supporting each other along the way.</p>
+        <div class="par-list">
+          <div><b>Parent – Teacher meetings</b><span>Regular conversations about each child's learning.</span></div>
+          <div><b>Progress Discussions</b><span>Continuous assessment shared openly with families.</span></div>
+          <div><b>School Announcements</b><span>Timely updates on events, calendars and notices.</span></div>
+          <div><b>Reading at Home</b><span>Simple habits that extend classroom learning.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec adm bleed on-dark" id="admissions">
+    <div class="wrap adm-grid">
+      <div class="rv">
+        <span class="eyebrow">Admissions 2027–28</span>
+        <h2 style="margin-top:14px">Your Child's Next Chapter<em>Starts Here.</em></h2>
+        <p class="lead">Discover a learning environment where children can build strong foundations, explore their interests and prepare for the opportunities ahead.</p>
+        <div class="cta-row"><a class="btn btn-or" href="#enq">Enquire About Admissions <span class="ar">↗</span></a><a class="btn btn-out" href="#philosophy">Discover Our School</a></div>
+        <div class="adm-img"><img src="img/two-girls-hijab.jpg" alt="Two students walking and reading" loading="lazy"></div>
+      </div>
+      <div class="rv">
+        <form class="form" id="enq" novalidate>
+          <h3>Admissions enquiry</h3>
+          <p class="note">Fields marked * are required. Your details are stored securely and used only to respond to you.</p>
+          <div class="fld"><label for="fName">Parent / guardian name *</label><input id="fName" autocomplete="name"><div class="err" id="eName"></div></div>
+          <div class="f2">
+            <div class="fld"><label for="fPhone">Phone number *</label><input id="fPhone" inputmode="tel" autocomplete="tel" placeholder="+91"><div class="err" id="ePhone"></div></div>
+            <div class="fld"><label for="fMail">Email address *</label><input id="fMail" type="email" autocomplete="email"><div class="err" id="eMail"></div></div>
+          </div>
+          <div class="f2">
+            <div class="fld"><label for="fGrade">Child's intended grade *</label><select id="fGrade"><option value="">Select a grade</option></select><div class="err" id="eGrade"></div></div>
+            <div class="fld"><span class="lb" id="lbPref">Preferred contact *</span>
+              <div class="seg" role="radiogroup" aria-labelledby="lbPref"><input type="radio" name="pref" id="pPhone" checked><label for="pPhone">Phone</label><input type="radio" name="pref" id="pWa"><label for="pWa">WhatsApp</label><input type="radio" name="pref" id="pMail"><label for="pMail">Email</label></div>
+            </div>
+          </div>
+          <div class="fld"><label for="fNote">Anything you'd like us to know? <span style="font-weight:400;color:var(--muted)">(optional)</span></label><textarea id="fNote"></textarea></div>
+          <label class="agree"><input type="checkbox" id="fAgree"><span>I agree to be contacted by Srividya's Abhyasana about this admissions enquiry. *</span></label>
+          <div class="err" id="eAgree" style="font-size:12px;color:#C23B2E;margin-top:-8px"></div>
+          <button class="btn btn-or" type="submit">Submit Enquiry <span class="ar">↗</span></button>
+          <p class="note" style="margin:0">Prototype form: nothing is sent yet. On the live site this goes to the admissions team.</p>
+        </form>
+        <div class="form thanks" id="thanks" hidden>
+          <span class="eyebrow">Prototype confirmation</span>
+          <h3>Thank you, <span id="tName"></span>.</h3>
+          <p style="font-size:14.5px;color:var(--muted)">On the live site, the admissions team would now contact you on <b id="tPhone"></b> about <b id="tGrade"></b>. To reach them today, call 799 799 1255.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bleed" id="contact">
+    <div class="wrap visit-grid">
+      <div class="visit-l rv">
+        <span class="eyebrow">Visit &amp; contact</span>
+        <h2 class="title" style="font-size:clamp(36px,5vw,54px)">We'd love to <em style="display:inline">meet you.</em></h2>
+        <p class="lead" style="font-size:15px">Come see our classrooms, meet our teachers and ask every question you have.</p>
+        <div class="im"><img src="img/lounge.jpg" alt="The welcoming parent lounge" loading="lazy"></div>
+      </div>
+      <div class="vcard rv">
+        <div class="vc-in">
+          <div>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            <h4 style="margin-top:10px">Srividya's Abhyasana — The School</h4>
+            <address>Plot No. 22/A, 22/D, beside Nallagandla Flyover, HUDA Trade Centre, Serilingampalli, Hyderabad – 500019</address>
+            <a class="dir" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Srividya+Abhyasana+The+School+Serilingampally+Hyderabad+500019">Get directions ↗</a>
+          </div>
+          <div class="vc-2">
+            <div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><small>Call us</small><a href="tel:+917997991255">799 799 1255</a><a href="tel:+917997994557">799 799 4557</a></div>
+            <div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><small>Email us</small><span class="t">info@srividyaschools.com</span></div>
+          </div>
+        </div>
+        <div class="vc-foot"><span>Ready to take the next step?</span><a class="btn btn-or btn-sm" href="#admissions">Enquire About Admissions <span class="ar">↗</span></a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="bleed">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="plate"><img src="img/logo-mark.png" alt="" width="64" height="56"><div><span class="bt"><small>Srividya's</small><b>Abhyasana</b><i>The School</i></span><span class="tg">expert in global education..</span></div></div>
+        <p class="about">A Srividya school in Serilingampalli, Hyderabad — nurturing curious, confident and compassionate learners.</p>
+      </div>
+      <div><h4>Explore</h4><ul><li><a href="#academics">Academics</a></li><li><a href="#student-life">Student Life</a></li><li><a href="#beyond">Beyond Academics</a></li><li><a href="#campus">Campus</a></li><li><a href="#admissions">Admissions</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4>Contact</h4><div class="ct"><span>Plot No. 22/A, 22/D, beside Nallagandla Flyover, HUDA Trade Centre, Serilingampalli, Hyderabad – 500019</span><span>799 799 1255<br>799 799 4557</span><span>info@srividyaschools.com</span></div></div>
+    </div>
+    <div class="foot-bot"><span>© 2026 Srividya's Abhyasana — The School. All rights reserved.</span><span>Privacy policy &amp; Terms of use</span></div>
+  </div>
+</footer>
+
+<div class="mbar"><a class="btn btn-wh" href="tel:+917997991255">Call</a><a class="btn btn-or" href="#enq">Enquire <span class="ar">↗</span></a></div>
+
+<script>
+(function(){
+  var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var de=document.documentElement;
+  if(!reduce)de.classList.add('js');
+
+  /* header, menu */
+  var head=$('#head'),nav=$('#nav'),mb=$('#menuBtn');
+  function sc(){head.classList.toggle('scrolled',(window.scrollY||0)>8)}
+  addEventListener('scroll',sc,{passive:true});sc();
+  mb.addEventListener('click',function(){var o=nav.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
+  $$('#nav > li').forEach(function(li){
+    var b=$('button.top',li);
+    if(b)b.addEventListener('click',function(){if(matchMedia('(max-width:1000px)').matches)li.classList.toggle('open')});
+  });
+  $$('#nav a[href^="#"], .brand, .mbar a, .head-cta').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');mb.setAttribute('aria-expanded','false')})});
+  var sections=['home','philosophy','legacy','academics','student-life','beyond','offers','campus','admissions','contact'];
+
+  /* reveals */
+  if('IntersectionObserver' in window&&!reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -6% 0px'});
+    $$('.rv').forEach(function(el){io.observe(el)});
+    /* counters */
+    var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting)return;cio.unobserve(e.target);
+      $$('[data-n]',e.target).forEach(function(el){
+        var n=parseFloat(el.dataset.n),dec=+(el.dataset.d||0),suf=el.dataset.s||'',big=n>=1000,t0=performance.now();
+        (function step(t){var p=Math.min(1,(t-t0)/1500),v=n*(1-Math.pow(1-p,4));
+          el.textContent=(big?Math.round(v).toLocaleString('en-US'):v.toFixed(dec))+suf;if(p<1)requestAnimationFrame(step)})(t0);
+      });
+    })},{threshold:.5});
+    var st=$('#stats');if(st)cio.observe(st);
+  }
+
+  /* gallery filter */
+  var chips=$('#chips'),gal=$('#gal');
+  [['all','All Activities'],['classroom','Classroom'],['creativity','Creativity'],['sports','Sports'],['events','Events'],['achievements','Achievements']].forEach(function(c,i){
+    var b=document.createElement('button');b.className='chip';b.type='button';b.textContent=c[1];b.dataset.f=c[0];b.setAttribute('aria-pressed',i===0);
+    b.addEventListener('click',function(){
+      $$('.chip',chips).forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+      gal.classList.toggle('filtered',c[0]!=='all');
+      $$('.tile',gal).forEach(function(t){t.hidden=!(c[0]==='all'||t.dataset.c.split(' ').indexOf(c[0])>-1)});
+    });
+    chips.appendChild(b);
+  });
+
+  /* rails */
+  $$('.arrow').forEach(function(a){
+    a.addEventListener('click',function(){
+      var r=document.getElementById(a.dataset.rail),w=r.firstElementChild.getBoundingClientRect().width+28;
+      r.scrollBy({left:w*(+a.dataset.dir),behavior:reduce?'auto':'smooth'});
+    });
+  });
+  $$('.rail').forEach(function(r){
+    var box=r.parentNode,prev=$('.prev',box),next=$('.next',box);
+    function upd(){if(!prev)return;prev.disabled=r.scrollLeft<4;next.disabled=r.scrollLeft+r.clientWidth>=r.scrollWidth-4}
+    r.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+  });
+
+  /* wheel */
+  var W=[
+    ['Academic Understanding','Clear concepts before quick answers.','In school life: Hands-on lab work turns theory into understanding.','img/lab-goggles.jpg','Two students in safety goggles in the lab'],
+    ['Critical Thinking','Questions that go beyond the textbook.','In school life: Chess and open problems teach children to plan and reason.','img/chess.jpg','A student playing chess'],
+    ['Creativity & Expression','Space to imagine, make and perform.','In school life: Art, craft and stage events let every child express ideas.','img/c-voice.jpg','A girl painting a mural'],
+    ['Communication Skills','Confident voices, clear ideas.','In school life: Presentations and class discussions build confident speaking.','img/teacher-bench.jpg','A teacher with children on a bench'],
+    ['Confidence & Collaboration','Learning to work as a team.','In school life: Team games on the turf teach fair play and trust.','img/football.jpg','Students playing football'],
+    ['Physical & Emotional Wellbeing','Calm minds and healthy bodies.','In school life: Yoga and sport keep growing minds balanced.','img/yoga.jpg','Students practising yoga']
+  ];
+  var wheel=$('#wheel'),pim=$('#pimgs'),wi=0,wt=null,wUser=false;
+  W.forEach(function(w,i){
+    var b=document.createElement('button');b.type='button';b.className='node n'+(i+1);b.setAttribute('role','tab');b.textContent=w[0].replace('&','&');
+    b.addEventListener('click',function(){wUser=true;stopW();setW(i)});wheel.appendChild(b);
+    var im=document.createElement('img');im.src=w[3];im.alt=w[4];im.loading='lazy';pim.appendChild(im);
+  });
+  function setW(i){
+    wi=i;
+    $$('.node',wheel).forEach(function(n,k){n.setAttribute('aria-selected',k===i)});
+    $$('img',pim).forEach(function(m,k){m.classList.toggle('on',k===i)});
+    $('#pcount').textContent='0'+(i+1)+' / 06';$('#ptitle').textContent=W[i][0];$('#ptag').textContent=W[i][1];$('#pschool').textContent=W[i][2];
+  }
+  function startW(){if(reduce||wUser||wt)return;wt=setInterval(function(){setW((wi+1)%W.length)},4800)}
+  function stopW(){if(wt){clearInterval(wt);wt=null}}
+  setW(0);
+  var ob=$('.wheel-grid');
+  if('IntersectionObserver' in window&&ob)new IntersectionObserver(function(es){es[0].isIntersecting?startW():stopW()},{threshold:.35}).observe(ob);
+
+  /* form */
+  var sel=$('#fGrade');
+  ['Nursery','Grade I','Grade II','Grade III','Grade IV','Grade V','Grade VI','Grade VII','Grade VIII','Grade IX','Grade X'].forEach(function(g){var o=document.createElement('option');o.value=g;o.textContent=g;sel.appendChild(o)});
+  var form=$('#enq'),thanks=$('#thanks');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();var ok=true;
+    var n=$('#fName').value.trim(),p=$('#fPhone').value.replace(/[\s-]/g,'').replace(/^\+?91/,''),m=$('#fMail').value.trim(),g=sel.value;
+    function chk(id,cond,msg){$(id).textContent=cond?'':msg;if(!cond)ok=false}
+    chk('#eName',!!n,'Please enter a name.');
+    chk('#ePhone',/^[6-9]\d{9}$/.test(p),'Enter a 10-digit mobile number.');
+    chk('#eMail',/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m),'Enter a valid email address.');
+    chk('#eGrade',!!g,'Please choose a grade.');
+    chk('#eAgree',$('#fAgree').checked,'Please agree to be contacted.');
+    if(!ok)return;
+    $('#tName').textContent=n.split(' ')[0];$('#tPhone').textContent=$('#pMail').checked?m:p;$('#tGrade').textContent=g;
+    form.hidden=true;thanks.hidden=false;
+  });
+  $$('a[href="#enq"]').forEach(function(a){a.addEventListener('click',function(){setTimeout(function(){var f=$('#fName');if(f&&!form.hidden)f.focus({preventScroll:true})},500)})});
+})();
+</script>

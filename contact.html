@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contact — Srividya's Abhyasana</title>
+<meta name="description" content="Call, email or send an admissions enquiry to Srividya's Abhyasana, and find your nearest campus.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/page.css">
+</head>
+<body>
+<div data-header></div>
+<main id="main">
+  <section class="inner-hero wave-bg">
+    <div class="wrap reveal">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>Contact</span></nav>
+      <h1>We'd Love to <em>Hear</em> From You</h1>
+      <p class="lead">Questions about admissions, fees or campus visits? Reach out any way you like.</p>
+    </div>
+  </section>
+
+  <section class="section" id="touch">
+    <div class="wrap">
+      <div class="sec-head center reveal"><p class="eyebrow">Get in Touch</p><h2>Talk to <em>Us</em></h2></div>
+      <div class="info-grid">
+        <div class="card info reveal"><span class="ib"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span><h3>Call</h3><p><a href="tel:+917997991255">799 799 1255</a><br><a href="tel:+917997994557">799 799 4557</a></p></div>
+        <div class="card info reveal"><span class="ib"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span><h3>Email</h3><p><a href="mailto:info@srividyaschools.com">info@srividyaschools.com</a></p></div>
+        <div class="card info reveal"><span class="ib"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span><h3>Visit</h3><p>Walk in to any campus, or plan a guided visit with the form below.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="enquiry">
+    <div class="wrap">
+      <div class="sec-head center reveal"><p class="eyebrow">Enquiry</p><h2>Admissions <em>Enquiry</em></h2><p class="lead">Share a few details and our team will call you back.</p></div>
+      <div class="card" data-enquiry>
+        <form class="form" novalidate>
+          <div class="form-row">
+            <div class="field"><label for="f-name">Parent's name</label><input id="f-name" name="name" autocomplete="name" required><span class="err" id="e-name"></span></div>
+            <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required><span class="err" id="e-phone"></span></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required><span class="err" id="e-email"></span></div>
+            <div class="field"><label for="f-branch">Campus</label><select id="f-branch" name="branch" required><option value="">Select a campus</option></select><span class="err" id="e-branch"></span></div>
+          </div>
+          <div class="field"><label for="f-grade">Grade applying for</label>
+            <select id="f-grade" name="grade" required><option value="">Select a grade</option><option>Nursery</option><option>LKG</option><option>UKG</option><option>Grade I</option><option>Grade II</option><option>Grade III</option><option>Grade IV</option><option>Grade V</option><option>Grade VI</option><option>Grade VII</option><option>Grade VIII</option><option>Grade IX</option><option>Grade X</option></select>
+            <span class="err" id="e-grade"></span></div>
+          <div class="field"><label for="f-msg">Message <small>(optional)</small></label><textarea id="f-msg" name="message" maxlength="600"></textarea></div>
+          <button class="btn btn-primary" type="submit">Send Enquiry</button>
+        </form>
+        <div class="form-done" hidden tabindex="-1">
+          <span class="ib"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg></span>
+          <h3>Thank you!</h3>
+          <p data-done-msg></p>
+          <button class="btn btn-outline btn-sm" type="button" data-reset>Send another enquiry</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="locate">
+    <div class="wrap">
+      <div class="sec-head center reveal"><p class="eyebrow">Locate a Campus</p><h2>Find Us <em>Near You</em></h2></div>
+      <div class="addr-list cols" data-branch-addresses></div>
+    </div>
+  </section>
+</main>
+<div data-footer></div>
+<script src="data/branches.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
